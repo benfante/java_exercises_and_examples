@@ -1,0 +1,5 @@
+2019-07-04 15:21:31 ERROR This is an error
+2019-07-04 15:21:31 WARN  This is an warn
+2019-07-04 15:21:31 INFO  This is an info
+2019-07-04 15:21:31 DEBUG This is an debug
+2019-07-04 15:21:31 TRACE This is an trace
