@@ -28,7 +28,8 @@ public class DefaultConstructorExample {
 
 	@Override
 	public String toString() {
-		return "DefaultConstructorExample [anAttribute=" + anAttribute + ", h=" + h + "]";
+		return "DefaultConstructorExample [anAttribute=" + anAttribute + ", h=" + h + ", k=" + k + "]";
 	}
+
 
 }
