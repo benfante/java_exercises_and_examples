@@ -119,7 +119,7 @@ public class InsertFilm implements AutoCloseable {
             app.addFilmToInventory(filmId, 1);
             app.addFilmToInventory(filmId, 1);
             app.addFilmToInventory(filmId, 1);
-            conn.rollback();
+            conn.rollback(); // always rollbacking...just for testing it without really having changes on the DB
         }
     }
 }
