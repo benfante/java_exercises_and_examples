@@ -35,6 +35,7 @@ public class InsertFilm implements AutoCloseable {
         insertActor = conn.prepareStatement("insert into actor(first_name, last_name) VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS);
         addActorToFilm = conn.prepareStatement("insert into film_actor(film_id, actor_id) VALUES (?, ?);");
         addFilmToInventory = conn.prepareStatement("insert into inventory(film_id, store_id) VALUES (?, ?);");
+        log.info("Statements prepared");
     }
 
     private void closeStatements() {
@@ -105,7 +106,6 @@ public class InsertFilm implements AutoCloseable {
                 "jdbc:mysql://localhost/sakila?serverTimezone=UTC&useSSL=false", "root", "root");
                 InsertFilm app = new InsertFilm(conn);) {
             conn.setAutoCommit(false);
-            app.prepareStatements(conn);
             long filmId = app.insertFilm("Fantozzi",
                 "Il ragionier Ugo Fantozzi, dimenticato da molti giorni nei gabinetti murati della società ItalPetrolCemeTermoTessilFarmoMetalChimica viene ritrovato grazie a una \'rispettosa\' telefonata della moglie Pina che ha osato finalmente chiedere sue notizie. Da quel momento veniamo a conoscenza della sua vita familiare (ha una figlia, Mariangela, dall\'aspetto decisamente poco invitante), del suo segreto amore (la collega signorina Silvani) e soprattutto delle vessazioni a cui è sottoposto (e a cui talvolta si auto sottopone preventivamente) al lavoro.",
                 1975, "Italian", 100);
