@@ -15,7 +15,7 @@ public class UpdateExample {
 		
 		klingon.setName("Klingon");
 		
-		em.remove(klingon);
+		//em.remove(klingon);
 		
 		em.getTransaction().commit();
 		em.close();
