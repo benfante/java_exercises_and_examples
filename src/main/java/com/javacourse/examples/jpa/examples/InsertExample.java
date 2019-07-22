@@ -14,7 +14,7 @@ public class InsertExample {
 
 		Language newLanguage = new Language();
 		newLanguage.setName("Spanish");
-		newLanguage.setLastUpdate(new Date());
+//		newLanguage.setLastUpdate(new Date());
 		
 		em.persist(newLanguage);
 		

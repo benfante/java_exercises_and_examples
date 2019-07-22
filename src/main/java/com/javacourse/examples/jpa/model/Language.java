@@ -29,7 +29,7 @@ public class Language implements Serializable {
     @Column(name = "language_id")
     private Short languageId;
     private String name;
-    @Column(name = "last_update")
+    @Column(name = "last_update", insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "language")

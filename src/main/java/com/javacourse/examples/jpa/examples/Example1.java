@@ -11,7 +11,7 @@ import com.javacourse.examples.jpa.model.Film;
 import com.javacourse.examples.jpa.util.JpaUtil;
 
 public class Example1 {
-	public static void main1(String[] args) {
+	public static void main(String[] args) {
 		EntityManager em = null;
 		try {
 			em = JpaUtil.getEntityManagerFactory().createEntityManager();
@@ -32,7 +32,7 @@ public class Example1 {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main2(String[] args) {
 		EntityManager em = null;
 		try {
 			em = JpaUtil.getEntityManagerFactory().createEntityManager();
