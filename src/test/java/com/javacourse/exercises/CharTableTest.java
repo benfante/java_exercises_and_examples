@@ -13,12 +13,6 @@ public class CharTableTest {
 		assertEquals("'a' = 97\t'A' = 65", row);
 	}
 
-	
-	
-	
-	
-	
-	
 	@Test
 	public void testAppendRow() {
 		CharTable charTable = new CharTable();

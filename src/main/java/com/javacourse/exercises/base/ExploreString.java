@@ -22,7 +22,7 @@ public class ExploreString {
 				(s.contains("pluto") ? "YES" : "NO")
 		);
 		System.out.println("pluto? " +
-				(s.indexOf("pluto") > 0 ? "YES" : "NO")
+				(s.indexOf("pluto") >= 0 ? "YES" : "NO")
 		);
 		String[] words = s.split(" ");
 		System.out.println(Arrays.toString(words));
