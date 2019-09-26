@@ -14,6 +14,10 @@ public class B extends A {
 		this(0, 0, c);
 	}
 
+	public B(int c, long k) {
+		this.c = c;
+	}
+	
 	@Override
 	public int sum() {
 		return super.sum() + c;

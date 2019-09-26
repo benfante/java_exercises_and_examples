@@ -1,51 +1,157 @@
 package com.javacourse.examples.collections;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class CollectionExamples {
-	public static void main(String[] args) {
+	
+	public Collection<String> createCollection() {
 		Collection<String> c = new ArrayList<>();
-		int a = 1;
-		String s1 = "" + a;
-//		String s1 = "1";
-		c.add(s1);
-		c.add("Lucio");
-		c.add("topolino");
+		c.add("Primo");
+		c.add("Secondo");
+		c.add("Terzo");
+		c.add("Quarto");
+		return c;
+	}
 
-		Collection<String> toRemove = new LinkedList<>();
-		for (String s : c) {
-			System.out.println(s.toLowerCase());
-			if (s.length() == 1) {
-				toRemove.add(s);
+	public List<String> createList() {
+		List<String> c = new ArrayList<>();
+		c.add("Primo");
+		c.add("Secondo");
+		c.add("Terzo");
+		c.add("Quarto");
+		return c;
+	}
+	
+	public void usingCollection(Collection<String> c) {	
+		for (String element : c) {
+			System.out.println(element);
+		}
+		c.remove("Secondo");
+		System.out.println(c);
+	}
+	
+	public void usingCollectionWithIterator(Collection<String> c) {
+		Iterator<String> it = c.iterator();
+		while (it.hasNext()) {
+			String value = it.next();
+			System.out.println(value);
+		}
+	}
+	
+
+	public void removeElementFromCollection(Collection<String> c) {
+		for (String element : c) {
+			if (element.equalsIgnoreCase("secondo")) {
+				c.remove(element);
 			}
 		}
-		c.removeAll(toRemove);
-
 		System.out.println(c);
-
-		String s2 = "1";
-//		c.remove(s2);
-		
-		System.out.println(c);
-		
-		System.out.println(s1 == s2);
-		System.out.println(s1.equals(s2));
-		
-		c.add("2");
-		c.add("pippo");
-		c.add("pluto");
-		System.out.println(c);
+	}
+	
+	public void removeElementFromCollectionWithIterator(Collection<String> c) {
 		Iterator<String> it = c.iterator();
-		while(it.hasNext()) {
-			String s = it.next();
-			System.out.println(s);
-			if (s.length() == 1) {
+		while (it.hasNext()) {
+			String element = it.next();
+			if (element.equalsIgnoreCase("secondo")) {
 				it.remove();
 			}
 		}
 		System.out.println(c);
 	}
+	
+	public void convertToArray(Collection<String> c) {
+		Object[] array = c.toArray();
+		System.out.println(Arrays.toString(array));
+		
+		
+//		Object[] oarr = new String[] {"Primo", "Secondo", "Terzo"};
+//		System.out.println(Arrays.toString(oarr));
+//		oarr[0] = new Date();
+	}
+
+	public void convertToArraySpecific(Collection<String> c) {
+		String[] array = c.toArray(new String[c.size()]);
+		System.out.println(Arrays.toString(array));
+	}	
+	
+	public void useList(List<String> l) {
+		for (int i = 0; i < l.size(); i++) {
+			System.out.println(l.get(i));
+		}
+	}
+	
+	public static void main(String[] args) {
+		CollectionExamples app = new CollectionExamples();
+		Collection<String> col = app.createCollection();
+		app.convertToArraySpecific(col);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	
+//	public static void main(String[] args) {
+//		Collection<String> c = new ArrayList<>();
+//		int a = 1;
+//		String s1 = "" + a;
+////		String s1 = "1";
+//		c.add(s1);
+//		c.add("Lucio");
+//		c.add("topolino");
+//
+//		Collection<String> toRemove = new LinkedList<>();
+//		for (String s : c) {
+//			System.out.println(s.toLowerCase());
+//			if (s.length() == 1) {
+//				toRemove.add(s);
+//			}
+//		}
+//		c.removeAll(toRemove);
+//
+//		System.out.println(c);
+//
+//		String s2 = "1";
+////		c.remove(s2);
+//		
+//		System.out.println(c);
+//		
+//		System.out.println(s1 == s2);
+//		System.out.println(s1.equals(s2));
+//		
+//		c.add("2");
+//		c.add("pippo");
+//		c.add("pluto");
+//		System.out.println(c);
+//		Iterator<String> it = c.iterator();
+//		while(it.hasNext()) {
+//			String s = it.next();
+//			System.out.println(s);
+//			if (s.length() == 1) {
+//				it.remove();
+//			}
+//		}
+//		System.out.println(c);
+//	}
 }

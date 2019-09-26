@@ -1,7 +1,12 @@
 package com.javacourse.examples.inheritance;
 
 public class A {
-	int a, b;
+	protected final int a;
+	int b;
+	
+	public A() {
+		a = 0;
+	}
 	
 	public A(int a, int b) {
 		this.a = a;

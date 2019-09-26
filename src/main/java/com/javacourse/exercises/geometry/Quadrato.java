@@ -13,6 +13,6 @@ public class Quadrato extends Figura {
 	
 	@Override
 	public String descriviti() {
-		return "Quadrato vero";
+		return super.descriviti()+" vero";
 	}
 }
