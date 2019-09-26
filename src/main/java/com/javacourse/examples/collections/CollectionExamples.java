@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class CollectionExamples {
 	
@@ -22,6 +24,24 @@ public class CollectionExamples {
 
 	public List<String> createList() {
 		List<String> c = new ArrayList<>();
+		c.add("Primo");
+		c.add("Secondo");
+		c.add("Terzo");
+		c.add("Quarto");
+		return c;
+	}
+
+	public Set<String> createSet() {
+		Set<String> c = new HashSet<>();
+		c.add("Primo");
+		c.add("Secondo");
+		c.add("Terzo");
+		c.add("Quarto");
+		return c;
+	}
+
+	public Set<String> createSortedSet() {
+		Set<String> c = new TreeSet<>(new StringLengthComparator());
 		c.add("Primo");
 		c.add("Secondo");
 		c.add("Terzo");
@@ -87,10 +107,21 @@ public class CollectionExamples {
 		}
 	}
 	
+	public void useSet(Set<String> s) {
+		System.out.println(s);
+		boolean result = s.add("Secondo");
+		System.out.println(result);
+		System.out.println(s);
+	}
+
+	public void useSortedSet(Set<String> s) {
+		System.out.println(s);
+	}
+	
 	public static void main(String[] args) {
 		CollectionExamples app = new CollectionExamples();
-		Collection<String> col = app.createCollection();
-		app.convertToArraySpecific(col);
+		Set<String> col = app.createSortedSet();
+		app.useSortedSet(col);
 	}
 	
 	
