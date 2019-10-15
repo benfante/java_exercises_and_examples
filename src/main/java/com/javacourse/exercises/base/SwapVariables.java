@@ -10,6 +10,14 @@ public class SwapVariables {
 		this.b = b;
 	}
 
+	public int getA() {
+		return this.a;
+	}
+	
+	public void setA(int a) {
+		this.a = a;
+	}
+	
 	@Override
 	public String toString() {
 		return "a = " + a + ", b = "+ b;
@@ -27,6 +35,12 @@ public class SwapVariables {
 		SwapVariables sv1 = new SwapVariables(12, 3);
 		sv1.swap();
 		System.out.println(sv1);
+		
+//		int a = 12;
+//		int b = 3;
+//		int tmp = b;
+//		b = a;
+//		a = tmp;
 	}
 
 }
