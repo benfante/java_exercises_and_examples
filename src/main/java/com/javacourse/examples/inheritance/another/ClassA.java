@@ -15,8 +15,9 @@ public class ClassA {
 }
 
 class ClassB extends ClassA {
+	@Override
 	public void methodTwo(int i) {
-	}
+	}	
 
 //	public void methodThree(int i) {
 //	}

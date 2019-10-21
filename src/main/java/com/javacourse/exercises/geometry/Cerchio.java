@@ -7,6 +7,7 @@ public class Cerchio extends Figura {
 		this.raggio = raggio;
 	}
 
+	@Override
 	public double area() {
 		return Math.PI * raggio * raggio;
 	}
