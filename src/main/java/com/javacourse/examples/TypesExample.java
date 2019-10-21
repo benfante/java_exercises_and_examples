@@ -2,6 +2,7 @@ package com.javacourse.examples;
 
 public class TypesExample {
 	
+	@SuppressWarnings("unused")
 	public static void integerTypes() {
 		int a = 2000000000;
 		long b = 12L*a;

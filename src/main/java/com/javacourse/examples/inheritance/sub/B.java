@@ -32,6 +32,7 @@ public class B extends A {
 		return "B [c=" + c + ", toString()=" + super.toString() + "]";
 	}
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		B b = new B(1, 2, 3);
 		System.out.println(b.sum());

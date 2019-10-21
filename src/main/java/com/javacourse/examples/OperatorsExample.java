@@ -34,6 +34,7 @@ public class OperatorsExample {
 		System.out.println(a != b);
 	}
 	
+	@SuppressWarnings("unused")
 	public static void logicOperators() {
 		System.out.println("logic AND (&&)");
 		System.out.println((true) && (true));

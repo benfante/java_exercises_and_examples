@@ -4,6 +4,7 @@ public class DefaultConstructorExample {
 	private String anAttribute;
 	private int h;
 	private final int k;
+	@SuppressWarnings("unused")
 	private static final int z;
 	
 	static {
