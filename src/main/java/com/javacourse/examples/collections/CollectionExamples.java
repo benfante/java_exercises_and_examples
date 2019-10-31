@@ -1,5 +1,6 @@
 package com.javacourse.examples.collections;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -90,10 +91,11 @@ public class CollectionExamples {
 		Object[] array = c.toArray();
 		System.out.println(Arrays.toString(array));
 		
+// 		String[] sArray = (String[])array;
 		
-//		Object[] oarr = new String[] {"Primo", "Secondo", "Terzo"};
+//		Object[] oarr = new String[] {"Primo", "Secondo", "Terzo"};		
 //		System.out.println(Arrays.toString(oarr));
-//		oarr[0] = new Date();
+//		oarr[0] = new BigDecimal("2.3");
 	}
 
 	public void convertToArraySpecific(Collection<String> c) {
@@ -120,8 +122,15 @@ public class CollectionExamples {
 	
 	public static void main(String[] args) {
 		CollectionExamples app = new CollectionExamples();
-		Set<String> col = app.createSortedSet();
-		app.useSortedSet(col);
+		
+		Collection<String> collection = app.createCollection();
+		app.convertToArraySpecific(collection);
+		
+		
+		
+		
+//		Set<String> col = app.createSortedSet();
+//		app.useSortedSet(col);
 	}
 	
 	
