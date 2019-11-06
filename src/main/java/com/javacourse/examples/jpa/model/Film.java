@@ -68,8 +68,8 @@ public class Film implements Serializable {
 	@Column(name = "last_update")
 	private Date lastUpdate;
 	@JoinColumn(name = "language_id", referencedColumnName = "language_id")
-//	@ManyToOne(optional = false, fetch = FetchType.LAZY)
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+//	@ManyToOne(optional = false)
 	private Language language;
 	@JoinColumn(name = "original_language_id", referencedColumnName = "language_id")
 	@ManyToOne
