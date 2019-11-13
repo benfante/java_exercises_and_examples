@@ -10,7 +10,8 @@ public class UpdateExample {
 		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		em.getTransaction().begin();
 
-		Language klingon = em.getReference(Language.class, (short)9);
+//		Language klingon = em.getReference(Language.class, (short)9);
+		Language klingon = em.find(Language.class, (short)9);
 		System.out.println(klingon.getName());
 		
 		klingon.setName("Klingon");
