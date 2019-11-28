@@ -54,7 +54,7 @@ public class ProductTable {
 
 	public int product(int a, int b) {
 		int result = 0;
-		if (a < this.table.length && b < this.table.length) {
+		if (a < this.table.length && b < this.table[a-1].length) {
 			result = this.table[a-1][b-1];
 		} else {
 			result = a * b;
