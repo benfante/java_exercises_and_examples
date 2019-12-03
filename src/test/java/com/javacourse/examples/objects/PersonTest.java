@@ -1,11 +1,11 @@
 package com.javacourse.examples.objects;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Calendar;
 import java.util.Date;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 class PersonTest {
 
@@ -20,9 +20,7 @@ class PersonTest {
 	@Test
 	void testGetAgeWithoutBirthDate() {
 		Person person = new Person("Mario", "Rossi");
-		int expected = -1;
-		int result = person.getAge();
-		assertEquals(expected, result);
+		assertFalse(person.getAge().isPresent());
 	}
 
 	@Test
@@ -33,7 +31,7 @@ class PersonTest {
 		Person person = new Person("Mario", "Rossi", calendar.getTime());
 		person.todayProvider.fixToday(2019, 10, 27);
 		int expected = 39;
-		int result = person.getAge();
+		int result = person.getAge().get();
 		assertEquals(expected, result);
 	}
 	

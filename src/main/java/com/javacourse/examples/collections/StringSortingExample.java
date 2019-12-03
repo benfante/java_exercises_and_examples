@@ -30,6 +30,5 @@ public class StringSortingExample {
 
 		Collections.sort(l, new StringLengthComparator(false));
 		System.out.println(l);
-		
 	}	
 }
