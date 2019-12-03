@@ -10,13 +10,17 @@ public class PersonApp {
 	Person[] archive = new Person[0];
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-	public Person readPerson(Scanner scan) throws ParseException {
+	public Person readPerson(Scanner scan) {
 		System.out.print("Nome: ");
 		String firstName = scan.nextLine();
 		System.out.print("Cognome: ");
 		String lastName = scan.nextLine();
 		System.out.print("Data di nascita (gg/mm/aaaa): ");
 		String birthDateString = scan.nextLine();
+		while (!birthDateString.isBlank() && !checkDate(birthDateString)) {
+			System.out.print("Data di nascita (gg/mm/aaaa): ");
+			birthDateString = scan.nextLine();
+		}
 		Person person = null;
 		if (!birthDateString.isBlank()) {
 			Date birthDate = parseDate(birthDateString);
@@ -27,8 +31,28 @@ public class PersonApp {
 		return person;
 	}
 
-	Date parseDate(String birthDateString) throws ParseException {
-		Date birthDate = dateFormat.parse(birthDateString);
+	boolean checkDate(String birthDateString) {
+		try {
+			dateFormat.parse(birthDateString);
+		} catch (ParseException e) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param birthDateString
+	 * @return
+	 * @throws IllegalArgumentException If the birth date string is not parseable. It should be checked in advance.
+	 */
+	Date parseDate(String birthDateString) throws IllegalArgumentException {
+		Date birthDate = null;
+		try {
+			birthDate = dateFormat.parse(birthDateString);
+		} catch (ParseException e) {
+			throw new IllegalArgumentException("birthDateString is not valid, must be checked in advance", e);
+		}
 		return birthDate;
 	}
 	
@@ -51,7 +75,7 @@ public class PersonApp {
 		}
 	}
 	
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) {
 		PersonApp personApp = new PersonApp();
 		Scanner scan = new Scanner(System.in);
 		do {
@@ -61,6 +85,14 @@ public class PersonApp {
 				break;
 			Person person = personApp.readPerson(scan);
 			personApp.addPerson(person);
+			
+			if (person.getAge() != null) {
+				System.out.println("Questa persona ha "+person.getAge().get()+" anni");
+			}
+			if (person.getAge().isPresent()) {
+				int nextAge = person.getAge().get() + 1;
+				System.out.println("L'anno prossimo avrà " + nextAge + " anni");
+			}
 		} while (true);
 		
 		personApp.printArchive();

@@ -7,9 +7,9 @@ import java.util.Arrays;
 
 public class ExceptionExample {
 
-	public static void main(String[] args) throws FileNotFoundException  {
+	public static void main(String[] args) throws FileNotFoundException {
 		ExceptionExample app = new ExceptionExample();
-		// app.firstMethod();
+		//app.firstMethod();
 		// app.thirdMethod();
 		// app.fourthMethod();
 		app.fifthMethod();
@@ -59,6 +59,7 @@ public class ExceptionExample {
 	private void fourthMethod() throws FileNotFoundException {
 		FileReader fr = new FileReader("PROVA.TXT");
 		// leggerò il contenuto del file
+		System.out.println("Sto terminando il fourthMethod");
 	}
 
 	private void fifthMethod() {

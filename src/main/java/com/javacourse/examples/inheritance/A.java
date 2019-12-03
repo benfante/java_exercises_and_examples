@@ -5,7 +5,7 @@ public class A {
 	int b;
 	
 	public A() {
-		a = 0;
+		a = 1;
 	}
 	
 	public A(int a, int b) {

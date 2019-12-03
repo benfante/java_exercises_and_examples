@@ -2,6 +2,7 @@ package com.javacourse.examples.objects;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 public class Person {
 	private String firstName;
@@ -25,26 +26,31 @@ public class Person {
 		return firstName + " " + lastName;
 	}
 	
-	public int getAge() {
+	public Optional<Integer> getAge() {
 		if (this.birthDate == null) {
-			return -1;
+			return Optional.empty();
 		} else {
 			Date today = todayProvider.getToday();
 			long passedTime = today.getTime() - this.birthDate.getTime();
 			int years = (int)(passedTime / (365*24*60*60*1000L));
-			return years;
+			return Optional.of(years);
 		}
 	}
 	
 	public boolean isBirthDate(Date today) {
-		Calendar todayCal = Calendar.getInstance();
-		todayCal.setTime(today);
-		Calendar birthDateCal = Calendar.getInstance();
-		birthDateCal.setTime(birthDate);
-		return todayCal.get(Calendar.MONTH) == birthDateCal.get(Calendar.MONTH) &&
-				todayCal.get(Calendar.DATE) == birthDateCal.get(Calendar.DATE);
+		if (birthDate != null) {
+			Calendar todayCal = Calendar.getInstance();
+			todayCal.setTime(today);
+			Calendar birthDateCal = Calendar.getInstance();
+			birthDateCal.setTime(birthDate);
+			return todayCal.get(Calendar.MONTH) == birthDateCal.get(Calendar.MONTH) &&
+					todayCal.get(Calendar.DATE) == birthDateCal.get(Calendar.DATE);
+		} else {
+			return false;
+		}
 	}
 	
+	@Override
 	public String toString() {
 		if (birthDate == null) {
 			return getFullName();

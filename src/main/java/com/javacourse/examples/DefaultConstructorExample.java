@@ -28,7 +28,7 @@ public class DefaultConstructorExample {
 	
 	public static void main(String[] args) {
 //		DefaultConstructorExample.z = 10;
-		DefaultConstructorExample instance = new DefaultConstructorExample("pippo");
+		DefaultConstructorExample instance = new DefaultConstructorExample("a parameter");
 		// instance.k = 54; // no, it's final
 		System.out.println(instance);
 	}
