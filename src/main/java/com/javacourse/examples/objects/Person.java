@@ -2,9 +2,10 @@ package com.javacourse.examples.objects;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Optional;
 
-public class Person {
+public class Person implements Comparable<Person> {
 	private String firstName;
 	private String lastName;
 	private Date birthDate;
@@ -58,4 +59,39 @@ public class Person {
 			return getFullName() + " (" + getAge() + ")";
 		}
 	}
+
+	@Override
+	public int compareTo(Person o) {
+		// return (this.lastName+this.firstName).compareToIgnoreCase(o.lastName+o.firstName);
+		int result = this.lastName.compareToIgnoreCase(o.lastName);
+		if (result == 0) {
+			result = this.firstName.compareToIgnoreCase(o.firstName);
+		}
+		return result;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, lastName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		return Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName);
+	}
+
+	public void setBirthDate(int year, int month, int day) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.clear();
+		calendar.set(year, month - 1, day);
+		this.birthDate = calendar.getTime();
+	}
+	
 }

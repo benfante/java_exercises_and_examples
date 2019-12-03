@@ -2,12 +2,17 @@ package com.javacourse.examples.objects;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class PersonApp {
-	Person[] archive = new Person[0];
+	Set<Person> archive = new HashSet<>();
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 	public Person readPerson(Scanner scan) {
@@ -57,8 +62,7 @@ public class PersonApp {
 	}
 	
 	public void addPerson(Person person) {
-		archive = Arrays.copyOf(archive, archive.length + 1);
-		archive[archive.length - 1] = person;
+		archive.add(person);
 	}
 
 	public void printArchive() {
@@ -66,7 +70,10 @@ public class PersonApp {
 		System.out.println("*************************************");
 		System.out.println("*** People");
 		System.out.println("*************************************");
-		for (Person person : archive) {
+		List<Person> orderedArchive = new ArrayList<>(archive);
+		// Collections.sort(orderedArchive);
+		orderedArchive.sort(null);
+		for (Person person : orderedArchive) {
 			System.out.print(person);
 			if (person.isBirthDate(today)) {
 				System.out.print(" (Happy BirthDay)");
@@ -85,8 +92,8 @@ public class PersonApp {
 				break;
 			Person person = personApp.readPerson(scan);
 			personApp.addPerson(person);
-			
-			if (person.getAge() != null) {
+
+			if (person.getAge().isPresent()) {
 				System.out.println("Questa persona ha "+person.getAge().get()+" anni");
 			}
 			if (person.getAge().isPresent()) {
@@ -98,6 +105,13 @@ public class PersonApp {
 		personApp.printArchive();
 		
 		scan.close();
+/*
+		Person mario = new Person("Mario", "Rossi");
+		mario.setBirthDate(2003, 11, 23);
+		personApp.archive.remove(mario);
+		personApp.archive.add(mario);
+		personApp.printArchive();
+*/	
 	}
 
 }

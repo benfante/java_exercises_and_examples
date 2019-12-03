@@ -36,9 +36,9 @@ class PersonAppTest {
 	@Test
 	void testAddPerson() {
 		PersonApp app = new PersonApp();
-		int initialSize = app.archive.length;
+		int initialSize = app.archive.size();
 		app.addPerson(new Person("Mario", "Rossi"));
-		assertEquals(initialSize+1, app.archive.length);
+		assertEquals(initialSize+1, app.archive.size());
 	}
 
 }
