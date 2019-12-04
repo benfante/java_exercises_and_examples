@@ -11,8 +11,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
+import com.javacourse.examples.objects.repository.PersonRepository;
+import com.javacourse.examples.objects.repository.RepositoryFactory;
+
 public class PersonApp {
-	Set<Person> archive = new HashSet<>();
+	PersonRepository personRepository = RepositoryFactory.getPersonRepository();
+	
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 	public Person readPerson(Scanner scan) {
@@ -60,19 +64,13 @@ public class PersonApp {
 		}
 		return birthDate;
 	}
-	
-	public void addPerson(Person person) {
-		archive.add(person);
-	}
 
 	public void printArchive() {
 		Date today = new Date();
 		System.out.println("*************************************");
 		System.out.println("*** People");
 		System.out.println("*************************************");
-		List<Person> orderedArchive = new ArrayList<>(archive);
-		// Collections.sort(orderedArchive);
-		orderedArchive.sort(null);
+		List<Person> orderedArchive = personRepository.findAllOrderByLastNameAndFirstName();
 		for (Person person : orderedArchive) {
 			System.out.print(person);
 			if (person.isBirthDate(today)) {
@@ -91,7 +89,7 @@ public class PersonApp {
 			if (!"s".equalsIgnoreCase(again))
 				break;
 			Person person = personApp.readPerson(scan);
-			personApp.addPerson(person);
+			personApp.personRepository.save(person);
 
 			if (person.getAge().isPresent()) {
 				System.out.println("Questa persona ha "+person.getAge().get()+" anni");

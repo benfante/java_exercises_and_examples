@@ -93,5 +93,17 @@ public class Person implements Comparable<Person> {
 		calendar.set(year, month - 1, day);
 		this.birthDate = calendar.getTime();
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
 	
 }

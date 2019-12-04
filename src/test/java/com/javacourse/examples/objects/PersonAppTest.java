@@ -33,12 +33,4 @@ class PersonAppTest {
 		assertEquals(1980, calendar.get(Calendar.YEAR));
 	}
 
-	@Test
-	void testAddPerson() {
-		PersonApp app = new PersonApp();
-		int initialSize = app.archive.size();
-		app.addPerson(new Person("Mario", "Rossi"));
-		assertEquals(initialSize+1, app.archive.size());
-	}
-
 }
