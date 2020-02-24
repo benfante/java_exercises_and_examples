@@ -1,9 +1,14 @@
 package com.javacourse.examples;
 
 public class VariablesExample {
+	int a = 10;
 
+	/* 
+	 * \\u
+	 */
+	
 	public static void localVariables() {
-		int a = 10;
+		int a = 20;
 		System.out.println(a);
 		a = 20;
 		System.out.println(a);
@@ -53,6 +58,8 @@ public class VariablesExample {
 	
 	public void nonStaticMethod() {
 		attr2 = attr2 + 5;
+		System.out.println(attr2);
+		VariablesExample.attr1 = 3;
 	}
 	
 	public static void main(String[] args) {
@@ -65,7 +72,8 @@ public class VariablesExample {
 //		classAttributes();
 //		System.out.println(attr1);
 
-		//System.out.println(attr2);
+//		System.out.println(attr2);
+//		nonStaticMethod();
 		
 		VariablesExample ve1 = new VariablesExample();
 		VariablesExample ve2 = new VariablesExample();
@@ -73,6 +81,7 @@ public class VariablesExample {
 		ve2.nonStaticMethod();
 		System.out.println(ve1.attr2);
 		System.out.println(ve2.attr2);
+		
 	}
 
 }

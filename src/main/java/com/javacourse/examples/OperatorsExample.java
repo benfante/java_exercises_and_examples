@@ -21,7 +21,7 @@ public class OperatorsExample {
 		
 		long l = 8L;
 		a = (int)(a + l);
-		a += l;
+		a += l;		
 	}
 	
 	public static void comparaisonOperators() {
@@ -31,7 +31,7 @@ public class OperatorsExample {
 		System.out.println(a > b);
 		System.out.println(a <= b);
 		System.out.println(a >= b);
-		System.out.println(a != b);
+		System.out.println(a != b);		
 	}
 	
 	@SuppressWarnings("unused")
@@ -63,13 +63,19 @@ public class OperatorsExample {
 		System.out.println(a);
 		System.out.println(b);
 			
-	}
+		String s = null;
+		if (s != null && s.length() > 10) {
+			// qualcosa se la lunghezza di s è maggiore di 10
+		}
+		
+ 	}
 	
 	public static void passingAString(String s) {
 		if (s != null && s.length() > 3) {
 			// La stringa "Lucio" è lunga 5 caratteri
 			System.out.println((((("La stringa \"" + s) + "\" è\nlunga \u26AA") + s.length()) + " caratteri"));
 		}
+		
 	}
 	
 	public static void main(String[] args) {

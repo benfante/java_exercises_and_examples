@@ -9,7 +9,7 @@ public class ExceptionExample {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		ExceptionExample app = new ExceptionExample();
-		//app.firstMethod();
+		// app.firstMethod();
 		// app.thirdMethod();
 		// app.fourthMethod();
 		app.fifthMethod();
@@ -25,9 +25,9 @@ public class ExceptionExample {
 				System.out.println("Sono arrivato qui");
 				success = true;
 			} catch (ArrayIndexOutOfBoundsException e) {
-//				//System.err.println(e.getMessage());
-//				e.printStackTrace();
-//				System.err.flush();
+				System.err.println(e.getMessage());
+				e.printStackTrace();
+				System.err.flush();
 //				System.out.println("No, sei stupido");
 //				System.out.flush();
 				index--;
@@ -39,7 +39,11 @@ public class ExceptionExample {
 		int arr[] = null;
 		// arr[0] = 1;
 		arr = new int[10];
-		arr[index] = value;
+		if (index < arr.length) {
+			arr[index] = value;
+		} else {
+			throw new ArrayIndexOutOfBoundsException("Eccezione falsa");
+		}
 		System.out.println(Arrays.toString(arr));
 	}
 	

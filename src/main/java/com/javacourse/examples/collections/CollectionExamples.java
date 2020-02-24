@@ -9,13 +9,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class CollectionExamples {
 	
 	public Collection<String> createCollection() {
-		Collection<String> c = new ArrayList<>();
+		Collection<String> c = new LinkedList<>();
 		c.add("Primo");
 		c.add("Secondo");
 		c.add("Terzo");
@@ -43,6 +44,7 @@ public class CollectionExamples {
 
 	public Set<String> createSortedSet() {
 		Set<String> c = new TreeSet<>(new StringLengthComparator());
+//		Set<String> c = new TreeSet<>();
 		c.add("Primo");
 		c.add("Secondo");
 		c.add("Terzo");
@@ -124,7 +126,10 @@ public class CollectionExamples {
 		CollectionExamples app = new CollectionExamples();
 		
 		Collection<String> collection = app.createCollection();
-		app.convertToArraySpecific(collection);
+		
+		app.removeElementFromCollectionWithIterator(collection);
+		
+//		app.convertToArraySpecific(collection);
 		
 		
 		

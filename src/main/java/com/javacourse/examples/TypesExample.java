@@ -5,14 +5,17 @@ public class TypesExample {
 	@SuppressWarnings("unused")
 	public static void integerTypes() {
 		int a = 2000000000;
+		System.out.println(a);
 		long b = 12L*a;
 		long c = 12;
-		int d = (int)12L;
+		int d = (int)24_000_000_000L;
 		System.out.println(a);
 		System.out.println(b);
 		System.out.println(c);
+		System.out.println(d);
 		byte e = 12;
-		byte f = (byte)(3*e);
+		byte e0 = 3;
+		byte f = (byte)(e0*e);
 		byte g0 = 100;
 		byte g = (byte)(e*f/g0);
 	}
@@ -20,7 +23,7 @@ public class TypesExample {
 	public static void charType() {
 		char a = 'a';
 		System.out.println(a);
-		char b = 65;
+		char b = 65; // = 'A'
 		System.out.println(b);
 		b = (char)(b + 1);
 		System.out.println(b);
@@ -43,6 +46,8 @@ public class TypesExample {
 	}
 	
 	public static void main(String[] args) {
+//		integerTypes();
+//		charType();
 		booleanType();
 	}
 

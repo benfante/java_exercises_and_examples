@@ -5,16 +5,16 @@ public class DefaultConstructorExample {
 	private int h;
 	private final int k;
 	@SuppressWarnings("unused")
-	private static final int z;
+	private static final int Z;
 	
 	static {
-		z = 10;
+		Z = 10;
 	}
 	
 	{
 		h = 3;
 	}
-	
+		
 	// no more default constructor
 	public DefaultConstructorExample(String anAttribute) {
 		this(anAttribute, 23);

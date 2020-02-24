@@ -63,7 +63,6 @@ public class B extends A {
 		
 		A a3 = new B(4, 5, 6);
 		System.out.println(a3.doubleSum());
-
 	}
 
 	private static A giveMeNumbers() {
