@@ -2,8 +2,6 @@ package com.javacourse.examples;
 
 import java.util.Arrays;
 
-import com.javacourse.examples.inheritance.A;
-
 public class ArrayExample {
 
 	public static void mixValues() {
