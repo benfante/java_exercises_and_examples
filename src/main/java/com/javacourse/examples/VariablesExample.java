@@ -28,6 +28,7 @@ public class VariablesExample {
 		a = (int)(10.0 / 2.9);
 		System.out.println(a);
 		{
+			// int a = 5;
 			System.out.println(a);
 			int b = 20;
 			System.out.println(b);
@@ -54,7 +55,7 @@ public class VariablesExample {
 		System.out.println(VariablesExample.attr1);
 	}
 	
-	public int attr2 = 6;
+	private int attr2 = 6;
 	
 	public void nonStaticMethod() {
 		attr2 = attr2 + 5;
@@ -65,15 +66,15 @@ public class VariablesExample {
 	public static void main(String[] args) {
 //		localVariables();
 		
-//		int a = 5;
-//		methodParameters(a);
-//		System.out.println(a);
+		// int a = 5;
+		// methodParameters(a);
+		// System.out.println(a);
 		
-//		classAttributes();
-//		System.out.println(attr1);
+		classAttributes();
+		System.out.println(attr1);
 
-//		System.out.println(attr2);
-//		nonStaticMethod();
+		// System.out.println(attr2);
+		// nonStaticMethod();
 		
 		VariablesExample ve1 = new VariablesExample();
 		VariablesExample ve2 = new VariablesExample();

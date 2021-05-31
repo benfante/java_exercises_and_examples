@@ -12,6 +12,11 @@ class AlarmClockTest {
 	}
 
 	@Test
+	void testAlarmClockOnWeekDayVacation() {
+		assertEquals("10:00", AlarmClock.alarmClock(1, true));
+	}
+
+	@Test
 	void testAlarmClockOnWeekendNoVacation() {
 		assertEquals("10:00", AlarmClock.alarmClock(0, false));
 	}
@@ -20,4 +25,15 @@ class AlarmClockTest {
 	void testAlarmClockOnVacationWeekend() {
 		assertEquals("off", AlarmClock.alarmClock(0, true));
 	}
+
+	@Test
+	void testIsWeekday() {
+		assertFalse(AlarmClock.isWeekend(2));
+	}
+
+	@Test
+	void testIsWeekend() {
+		assertTrue(AlarmClock.isWeekend(0));
+	}
+
 }

@@ -46,8 +46,8 @@ public class TypesExample {
 	}
 	
 	public static void main(String[] args) {
-//		integerTypes();
-//		charType();
+		integerTypes();
+		charType();
 		booleanType();
 	}
 

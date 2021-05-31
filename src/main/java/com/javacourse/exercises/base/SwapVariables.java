@@ -23,13 +23,17 @@ public class SwapVariables {
 		return "a = " + a + ", b = "+ b;
 	}
 
+	public void swapWithTemp() {
+		int temp = a;
+		a = b;
+		b = temp;
+	}
+
 	public void swap() {
 		a = a + b;
 		b = a - b;
 		a = a - b;
 	}
-
-
 
 	public static void main(String[] args) {
 		SwapVariables sv1 = new SwapVariables(12, 3);

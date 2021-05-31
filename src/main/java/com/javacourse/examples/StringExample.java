@@ -10,7 +10,7 @@ public class StringExample {
 		System.out.println(s);
 		
 		System.out.println(s.charAt(9));
-//		System.out.println(s.charAt(29));
+		// System.out.println(s.charAt(29));
 		
 		System.out.println(s.endsWith("g"));
 		
@@ -30,7 +30,7 @@ public class StringExample {
 		String s2 = "Concatenate ";
 		s2 = s2 + 2;
 		s2 = s2 + " different types";
-		
+	
 		System.out.println(s1 == s2);
 		System.out.println(s1.equals(s2));
 		
@@ -40,10 +40,17 @@ public class StringExample {
 		String t3 = "Luci";
 		t3 = t3+"o";
 		System.out.println(t1 == t3);
+
+		stringBuilderExample();
+		System.out.println(formatExample("Lucio"));
 	}
 	
-	public void stringBuilderExample() {
+	public static void stringBuilderExample() {
 		StringBuilder sb = new StringBuilder("Esempio");
 		sb.append(" di uso").append(" di StringBuilder"); // "Esempio di uso di StringBuilder"
+	}
+
+	public static String formatExample(String name) {
+		return String.format("Hello %s!", name);
 	}
 }

@@ -52,7 +52,7 @@ public class CharTable {
 		return result;
 	}
 
-	private char toUppercase(char lowercased) {
+	char toUppercase(char lowercased) {
 		return (char)(lowercased-'a'+'A');
 	}
 	

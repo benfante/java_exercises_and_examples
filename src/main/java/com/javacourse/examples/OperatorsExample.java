@@ -79,9 +79,9 @@ public class OperatorsExample {
 	}
 	
 	public static void main(String[] args) {
-//		arithmeticOperators();
-//		comparaisonOperators();
-//		logicOperators();
+		arithmeticOperators();
+		comparaisonOperators();
+		logicOperators();
 		passingAString("Lucio");
 	}
 }

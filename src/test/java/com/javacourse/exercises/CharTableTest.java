@@ -22,6 +22,12 @@ public class CharTableTest {
 	}
 	
 	@Test
+	public void testUpperCase() {
+		CharTable charTable = new CharTable();
+		assertEquals('A', charTable.toUppercase('a'));
+	}
+
+	@Test
 	public void testFullTable() {
 		CharTable charTable = new CharTable();
 		String expected = "'a' =  97    'A' =  65\n"+
