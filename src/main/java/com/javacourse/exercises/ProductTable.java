@@ -6,6 +6,10 @@ public class ProductTable {
 
 	private int[][] table;
 
+	public ProductTable() {
+
+	}
+
 	public ProductTable(int size) {
 		this.table = buildTable(size);
 	}
@@ -21,9 +25,15 @@ public class ProductTable {
 	}
 
 	public static void main(String[] args) {
+		// ProductTable productTable = new ProductTable();
+		// int[][] table = productTable.buildTable(10);
+		// productTable.print(table);
+
+
 		ProductTable table = new ProductTable(10);
 		table.print();
-		System.out.println(table.product(3, 5));
+
+		// System.out.println(table.product(3, 5));
 	}
 
 	public void print() {
