@@ -14,9 +14,9 @@ public class DefaultConstructorExample {
 	{
 		h = 3;
 	}
-		
+	
 	// no more default constructor
-	public DefaultConstructorExample(String anAttribute) {
+ 	public DefaultConstructorExample(String anAttribute) {
 		this(anAttribute, 23);
 		this.h = 34;
 	}
@@ -25,9 +25,10 @@ public class DefaultConstructorExample {
 		this.k = k;
 		this.anAttribute = anAttribute;
 	}
-	
+
 	public static void main(String[] args) {
 //		DefaultConstructorExample.z = 10;
+		//DefaultConstructorExample instance = new DefaultConstructorExample();
 		DefaultConstructorExample instance = new DefaultConstructorExample("a parameter");
 		// instance.k = 54; // no, it's final
 		System.out.println(instance);
