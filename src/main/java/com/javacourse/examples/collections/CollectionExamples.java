@@ -14,9 +14,19 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class CollectionExamples {
-	
+
+	public Collection createCollectionWithoutGenerics() {
+		Collection c = new LinkedList();
+		c.add("Primo");
+		c.add(Long.valueOf(10L));
+		c.add("Secondo");
+		c.add("Terzo");
+		c.add("Quarto");
+		return c;
+	}
+
 	public Collection<String> createCollection() {
-		Collection<String> c = new LinkedList<>();
+		Collection<String> c = new ArrayList<>();
 		c.add("Primo");
 		c.add("Secondo");
 		c.add("Terzo");
@@ -127,7 +137,9 @@ public class CollectionExamples {
 		
 		Collection<String> collection = app.createCollection();
 		
-		app.removeElementFromCollectionWithIterator(collection);
+		app.usingCollection(collection);
+
+		// app.removeElementFromCollectionWithIterator(collection);
 		
 //		app.convertToArraySpecific(collection);
 		
