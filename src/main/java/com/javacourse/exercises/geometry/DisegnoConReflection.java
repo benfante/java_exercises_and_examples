@@ -40,7 +40,7 @@ public class DisegnoConReflection {
 				figureClass = Class.forName("com.javacourse.exercises.geometry." + figura);
 				classFound = true;
 			} catch (ClassNotFoundException e) {
-				System.err.println("Figura non trovata.");
+				System.err.printf("Figura non trovata. (%s)\n", e.getLocalizedMessage());
 				classFound = false;
 			}
 		} while (!classFound);
