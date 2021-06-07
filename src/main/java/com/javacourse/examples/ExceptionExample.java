@@ -11,8 +11,15 @@ public class ExceptionExample {
 		ExceptionExample app = new ExceptionExample();
 		// app.firstMethod();
 		// app.thirdMethod();
-		// app.fourthMethod();
-		app.fifthMethod();
+		// app.fourthMethod("PROVA.TXT");
+		try {
+			app.fifthMethod();
+		} catch (IllegalArgumentException e) {
+			System.out.println("Devi controllare che il file esista!");
+			e.printStackTrace(System.out);
+		} catch (RuntimeException e) {
+			// errore generico
+		}
 	}
 
 	private void firstMethod() {
@@ -60,25 +67,25 @@ public class ExceptionExample {
 		}
 	}
 
-	private void fourthMethod() throws FileNotFoundException {
-		FileReader fr = new FileReader("PROVA.TXT");
+	private void fourthMethod(String filename) throws FileNotFoundException {
+		FileReader fr = new FileReader(filename);
 		// leggerò il contenuto del file
 		System.out.println("Sto terminando il fourthMethod");
 	}
 
 	private void fifthMethod() {
-		sixthMethod();
+		sixthMethod("PROVA.TXT");
 	}
 	
 	/**
 	 * 
-	 * @throws RuntimeException Nel caso in cui il file non venga trovato.
+	 * @throws IllegalArgumentException Nel caso in cui il file non venga trovato.
 	 */
-	private void sixthMethod() throws RuntimeException {
+	private void sixthMethod(String filename) throws IllegalArgumentException { /* RuntimeException */
 		try {
-			FileReader fr = new FileReader("PROVA.TXT");
+			FileReader fr = new FileReader(filename);
 		} catch (FileNotFoundException e) {
-			throw new RuntimeException("Il file non è stato trovato", e);
+			throw new IllegalArgumentException("Il file non è stato trovato", e);
 		}
 	}
 	
