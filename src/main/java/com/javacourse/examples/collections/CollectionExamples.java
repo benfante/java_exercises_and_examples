@@ -5,13 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+
+import com.javacourse.examples.objects.Person;
 
 public class CollectionExamples {
 
@@ -60,6 +64,26 @@ public class CollectionExamples {
 		c.add("Terzo");
 		c.add("Quarto");
 		return c;
+	}
+
+	public Map<String, Person> createMap() {
+		Map<String, Person> result = new HashMap<>();
+		Person p1 = new Person("Lucio", "Benfante");
+		result.put(p1.getLastName(), p1);
+		result.put("Verdi", new Person("Giuseppe", "Verdi"));
+		result.put("Bianco", new Person("Maria", "Bianco"));
+		result.put("Rossi", new Person("Giovanna", "Rossi"));
+		result.put("Neri", new Person("Francesco", "Neri"));
+		return result;
+	}
+
+	public Map<String, Collection<Person>> createComplexMap() {
+		Map<String, Collection<Person>> result = new HashMap<>();
+		result.put("B", List.of(new Person("Lucio", "Benfante"), new Person("Maria", "Bianco")));
+		result.put("V", List.of(new Person("Giuseppe", "Verdi")));
+		result.put("R", List.of(new Person("Giovanna", "Rossi")));
+		result.put("N", List.of(new Person("Francesco", "Neri")));
+		return result;
 	}
 	
 	public void usingCollection(Collection<String> c) {	
@@ -131,13 +155,23 @@ public class CollectionExamples {
 	public void useSortedSet(Set<String> s) {
 		System.out.println(s);
 	}
-	
+
+	public void useMap(Map<String, Person> m) {
+		Person p = m.get("Benfante");
+		System.out.println(p);
+	}
+
+	public void useComplexMap(Map<String, Collection<Person>> m) {
+		Collection<Person> p = m.get("B");
+		System.out.println(p);
+	}
+
 	public static void main(String[] args) {
 		CollectionExamples app = new CollectionExamples();
 		
-		Collection<String> collection = app.createCollection();
+		// Collection<String> collection = app.createCollection();
 		
-		app.usingCollection(collection);
+		// app.usingCollection(collection);
 
 		// app.removeElementFromCollectionWithIterator(collection);
 		
@@ -148,6 +182,12 @@ public class CollectionExamples {
 		
 //		Set<String> col = app.createSortedSet();
 //		app.useSortedSet(col);
+
+		// Map<String, Person> map = app.createMap();
+		// app.useMap(map);
+
+		Map<String, Collection<Person>> complexMap = app.createComplexMap();
+		app.useComplexMap(complexMap);
 	}
 	
 	
