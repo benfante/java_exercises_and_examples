@@ -1,0 +1,6 @@
+Esempio di file
+che contine un po' di 
+informazioni
+da leggere
+o scrivere commente caratteri
+o bytes.
