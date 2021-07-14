@@ -17,6 +17,23 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 public class Exercise1WithConnectionPool {
 
+	// Query for MySQL
+	// private static final String MAIN_QUERY = "SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f"
+	// 		+ " JOIN inventory i ON (i.film_id = f.film_id)"
+	// 		+ " JOIN rental r ON (r.inventory_id = i.inventory_id)"
+	// 		+ " WHERE YEAR(r.rental_date) = ? AND i.store_id = ?"
+	//      + " ORDER BY f.title;";
+
+	// Query for PostgreSQL
+	private static final String MAIN_QUERY = "SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f"
+			+ " JOIN inventory i ON (i.film_id = f.film_id)"
+			+ " JOIN rental r ON (r.inventory_id = i.inventory_id)"
+			+ " WHERE EXTRACT(YEAR FROM r.rental_date) = ? AND i.store_id = ?"
+			+ " ORDER BY f.title;";
+
+	//	private static final String JDBC_DATABASE_PROPERTIES = "com/javacourse/exercises/jdbc/database.properties";
+	private static final String JDBC_DATABASE_PROPERTIES = "com/javacourse/exercises/jdbc/database-postgres.properties";
+
 	private DataSource dataSource;
 
 	public Exercise1WithConnectionPool(DataSource dataSource) {
@@ -26,10 +43,7 @@ public class Exercise1WithConnectionPool {
 	public void printFilms(int storeId, int year) {
 		try (Connection conn = dataSource.getConnection();
 				PreparedStatement stmt = conn
-						.prepareStatement("SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f"
-								+ " JOIN inventory i ON (i.film_id = f.film_id)"
-								+ " JOIN rental r ON (r.inventory_id = i.inventory_id)"
-								+ " WHERE YEAR(r.rental_date) = ? AND i.store_id = ?" + " ORDER BY f.title;");
+						.prepareStatement(MAIN_QUERY);
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT a.first_name, a.last_name FROM actor a"
 						+ " JOIN film_actor fa ON (fa.actor_id = a.actor_id)" + " WHERE fa.film_id = ?;");) {
 			stmt.setInt(1, year);
@@ -80,7 +94,7 @@ public class Exercise1WithConnectionPool {
 
 	private static BasicDataSource getDataSource() throws IOException {
 		Properties properties = null;
-		try(InputStream is = Exercise1WithConnectionPool.class.getClassLoader().getResourceAsStream("com/javacourse/exercises/jdbc/database.properties");) {
+		try(InputStream is = Exercise1WithConnectionPool.class.getClassLoader().getResourceAsStream(JDBC_DATABASE_PROPERTIES);) {
 			properties = new Properties();
 			properties.load(is);
 		}
