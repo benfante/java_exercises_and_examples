@@ -7,8 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.Writer;
 import java.nio.charset.Charset;
 
 public class CopyTextFile {
@@ -21,13 +19,12 @@ public class CopyTextFile {
         System.out.println("Writing file: " + dest.getAbsolutePath());
 
         try (BufferedReader srcStream = new BufferedReader(new FileReader(file));
-                PrintWriter destStream = new PrintWriter(new BufferedWriter(new FileWriter(dest, Charset.forName("UTF-16")));) {
+                PrintWriter destStream = new PrintWriter(new BufferedWriter(new FileWriter(dest, Charset.forName("UTF-16"))));) {
             String value;
             while ((value = srcStream.readLine()) != null) {
                 destStream.println(value);
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

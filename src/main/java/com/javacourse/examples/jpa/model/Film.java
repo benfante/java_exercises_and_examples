@@ -128,11 +128,11 @@ public class Film implements Serializable {
 		this.description = description;
 	}
 
-	public Date getReleaseYear() {
+	public Integer getReleaseYear() {
 		return releaseYear;
 	}
 
-	public void setReleaseYear(Date releaseYear) {
+	public void setReleaseYear(Integer releaseYear) {
 		this.releaseYear = releaseYear;
 	}
 
