@@ -11,7 +11,7 @@ import com.javacourse.examples.jpa.util.JpaUtil;
 
 public class SearchFilmByLanguage {
 
-	public static void main1(String[] args) {
+	public static void main(String[] args) {
 		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		em.getTransaction().begin();
 		
@@ -28,7 +28,7 @@ public class SearchFilmByLanguage {
 		JpaUtil.closeEntityManagerFactory();
 	}
 	
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		em.getTransaction().begin();
 		

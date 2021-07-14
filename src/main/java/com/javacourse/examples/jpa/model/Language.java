@@ -83,6 +83,11 @@ public class Language implements Serializable {
         this.films = films;
     }
 
+    public void addFilmWithLanguage(Film film) {
+        this.films.add(film);
+        film.setLanguage(this);
+    }
+
     @XmlTransient
     public Collection<Film> getFilmsForOriginalLanguage() {
         return filmsForOriginalLanguage;

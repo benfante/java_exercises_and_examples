@@ -11,7 +11,7 @@ import com.javacourse.examples.jpa.model.Film;
 import com.javacourse.examples.jpa.util.JpaUtil;
 
 public class Example1 {
-	public static void main1(String[] args) {
+	public static void main_1_0(String[] args) {
 		EntityManager em = null;
 		List<Film> result = null;
 		try {
