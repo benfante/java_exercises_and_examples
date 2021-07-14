@@ -45,11 +45,10 @@ public class Film implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "title")
 	private String title;
-	@Lob
+	//@Lob // for a better mappig in MySQL
 	private String description;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "release_year")
-	private Date releaseYear;
+	private Integer releaseYear;
 	@Basic(optional = false)
 	@Column(name = "rental_duration")
 	private short rentalDuration;
