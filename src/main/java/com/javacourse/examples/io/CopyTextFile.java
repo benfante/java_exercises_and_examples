@@ -27,5 +27,27 @@ public class CopyTextFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+        // BufferedReader srcStream = null;
+        // BufferedWriter destStream = null;
+        // try {
+        //     srcStream = new BufferedReader(new FileReader(file));
+        //     destStream = new BufferedWriter(new FileWriter(dest, Charset.forName("UTF-16")));            
+        //     String value;
+        //     while ((value = srcStream.readLine()) != null) {
+        //         destStream.append(value).append('\n');
+        //     }
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // } finally {
+        //     try {
+        //         if (srcStream != null) srcStream.close();
+        //     } catch(IOException e) { /* nothing */ }
+        //     try {
+        //         if (destStream != null) destStream.close();
+        //     } catch(IOException e) { /* nothing */ }
+        // }
+        
     }
 }
