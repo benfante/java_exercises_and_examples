@@ -35,7 +35,7 @@ public class Rettangolo extends Figura {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(lato1 + lato2);
+		return Objects.hash(lato1, lato2);
 		//return 31;
 	}
 }

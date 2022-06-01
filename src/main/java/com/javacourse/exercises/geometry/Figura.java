@@ -24,6 +24,9 @@ public abstract class Figura implements Superficie, Descrivibile {
 		if (!(o instanceof Figura)) {
 			return false;
 		}
+		if (this.getClass() != o.getClass()) {
+			return false;
+		}
 		Figura figura = (Figura) o;
 		return this.area() == figura.area();
 	}

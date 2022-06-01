@@ -19,17 +19,10 @@ public class RettangoloTest {
         assertFalse(r1.equals(r2));
     }
 
-    // @Test
-    // void testHashCodeDifferent() {
-    //     Rettangolo r1 = new Rettangolo(10, 20);
-    //     Rettangolo r2 = new Rettangolo(14, 16);
-    //     assertTrue(r1.hashCode() != r2.hashCode()); // ?
-    // }
-
     @Test
     void testHashCode() {
         Rettangolo r1 = new Rettangolo(10, 20);
         Rettangolo r2 = new Rettangolo(20, 10);
-        assertTrue(r1.hashCode() == r2.hashCode());
+        assertTrue(r1.hashCode() != r2.hashCode());
     }
 }
