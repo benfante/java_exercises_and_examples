@@ -23,6 +23,6 @@ public class RettangoloTest {
     void testHashCode() {
         Rettangolo r1 = new Rettangolo(10, 20);
         Rettangolo r2 = new Rettangolo(20, 10);
-        assertTrue(r1.hashCode() != r2.hashCode());
+        assertTrue(r1.hashCode() == r2.hashCode());
     }
 }
