@@ -21,6 +21,7 @@ public class Rettangolo extends Figura {
 
 	@Override
 	public boolean equals(Object o) {
+		if (o == null) return false;
 		if (o == this)
 			return true;
 		if (!(o instanceof Rettangolo)) {
@@ -35,7 +36,7 @@ public class Rettangolo extends Figura {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(lato1, lato2);
+		return Objects.hash(lato1 + lato2);
 		//return 31;
 	}
 }
