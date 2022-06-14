@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.javacourse.examples.objects.Person;
 
@@ -20,41 +21,50 @@ public class StreamExamples {
         System.out.println(Arrays.toString(examples.aParallelStream()));
     }
 
+    public void doingNothing() {
+        Stream<String> stream = Arrays.stream(buildPersons())
+                .filter(person -> person.getLastName().startsWith("R"))
+                .sorted(Comparator.comparing(person -> person.getAge().get()))
+                // .map(Person::getFullName)
+                .map(person -> person.getFullName());
+    }
+
     public String[] aFirstExample() {
         return Arrays.stream(buildPersons())
-            .filter(person -> person.getLastName().startsWith("R"))
-            .sorted(Comparator.comparing(person -> person.getAge().get()))
-            .map(Person::getFullName)
-            .collect(Collectors.toList())
-            .toArray(new String[] {});
+                .filter(person -> person.getLastName().startsWith("R"))
+                .sorted(Comparator.comparing(person -> person.getAge().get()))
+                // .map(Person::getFullName)
+                .map(person -> person.getFullName())
+                .collect(Collectors.toList())
+                .toArray(new String[] {});
     }
 
     public String[] aParallelStream() {
         return Arrays.stream(buildPersons()).parallel()
-            .filter(person -> person.getLastName().startsWith("R"))
-            .sorted(Comparator.comparing(person -> person.getAge().get()))
-            .map(Person::getFullName)
-            .collect(Collectors.toList())
-            .toArray(new String[] {});
+                .filter(person -> person.getLastName().startsWith("R"))
+                .sorted(Comparator.comparing(person -> person.getAge().get()))
+                .map(Person::getFullName)
+                .collect(Collectors.toList())
+                .toArray(new String[] {});
     }
 
     private Person[] buildPersons() {
         return new Person[] {
-            new Person("Mario", "Rossi", getRandomDate()),
-            new Person("Giovanna", "Bianchi", getRandomDate()),
-            new Person("Sandra", "Neri", getRandomDate()),
-            new Person("Carlo", "Verdi", getRandomDate()),
-            new Person("Massimo", "Bianco", getRandomDate()),
-            new Person("Maria", "Rossi", getRandomDate()),
-            new Person("Chiara", "Rosi", getRandomDate())
+                new Person("Mario", "Rossi", getRandomDate()),
+                new Person("Giovanna", "Bianchi", getRandomDate()),
+                new Person("Sandra", "Neri", getRandomDate()),
+                new Person("Carlo", "Verdi", getRandomDate()),
+                new Person("Massimo", "Bianco", getRandomDate()),
+                new Person("Maria", "Rossi", getRandomDate()),
+                new Person("Chiara", "Rosi", getRandomDate())
         };
     }
 
     private Date getRandomDate() {
         cal.set(
-            random.nextInt(1970, 2010),
-            random.nextInt(0, 12),
-            random.nextInt(1, 32));
+                random.nextInt(1970, 2010),
+                random.nextInt(0, 12),
+                random.nextInt(1, 32));
         return cal.getTime();
     }
 }
