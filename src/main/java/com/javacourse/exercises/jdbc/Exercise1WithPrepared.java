@@ -5,21 +5,25 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
 
 public class Exercise1WithPrepared {
 	public void printFilms(int storeId, int year) {
-		try (Connection conn = DriverManager
-				.getConnection("jdbc:mysql://localhost/sakila?serverTimezone=UTC&useSSL=false", "root", "root");
-				PreparedStatement stmt = conn
-						.prepareStatement("SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f"
-								+ " JOIN inventory i ON (i.film_id = f.film_id)"
-								+ " JOIN rental r ON (r.inventory_id = i.inventory_id)"
-								+ " WHERE YEAR(r.rental_date) = ? AND i.store_id = ?"
-								+ " ORDER BY f.title;");
-				PreparedStatement stmt2 = conn.prepareStatement("SELECT a.first_name, a.last_name FROM actor a"
-						+ " JOIN film_actor fa ON (fa.actor_id = a.actor_id)" + " WHERE fa.film_id = ?;");) {
+		try (Connection conn = DriverManager.getConnection(
+				"jdbc:mysql://localhost/sakila?serverTimezone=UTC&useSSL=false",
+				"root", "root");
+				PreparedStatement stmt = conn.prepareStatement("""
+					SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f
+						JOIN inventory i ON (i.film_id = f.film_id)
+						JOIN rental r ON (r.inventory_id = i.inventory_id)
+						WHERE YEAR(r.rental_date) = ? AND i.store_id = ?
+						ORDER BY f.title;
+					""");
+				PreparedStatement stmt2 = conn.prepareStatement("""
+					SELECT a.first_name, a.last_name FROM actor a
+						JOIN film_actor fa ON (fa.actor_id = a.actor_id)
+						WHERE fa.film_id = ?;
+					""");) {
 			stmt.setInt(1, year);
 			stmt.setInt(2, storeId);
 			try (ResultSet rs = stmt.executeQuery();) {
