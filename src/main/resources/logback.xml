@@ -9,7 +9,7 @@
   </appender>
   # File appender
   <appender name="fout" class="ch.qos.logback.core.FileAppender">
-    <file>/examples.log</file>
+    <file>/tmp/examples.log</file>
     <append>false</append>
     <encoder>
       # Pattern of log message for file appender
