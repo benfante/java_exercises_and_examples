@@ -8,6 +8,15 @@ public class VariablesExample {
 	 */
 	
 	public static void localVariables() {
+		// int x;
+		// if (attr1 == 34) {
+		// 	x = 23;
+		// } else {
+		// 	x = 45;
+		// }
+		// System.out.println(x);
+
+
 		int a = 20;
 		System.out.println(a);
 		a = 20;
@@ -33,6 +42,7 @@ public class VariablesExample {
 			int b = 20;
 			System.out.println(b);
 		}
+		// System.out.println(b);
 	}
 	
 	public static void methodParameters(int a) {
