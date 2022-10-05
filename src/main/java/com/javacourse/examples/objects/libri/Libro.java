@@ -1,5 +1,6 @@
 package com.javacourse.examples.objects.libri;
 
+@SuppressWarnings("unused")
 public class Libro {
     private static final int MAX_PAGES;
 

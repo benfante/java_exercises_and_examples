@@ -66,5 +66,6 @@ public class Exercise1WithPrepared {
 				exit = true;
 			}
 		}
+		scan.close();
 	}
 }

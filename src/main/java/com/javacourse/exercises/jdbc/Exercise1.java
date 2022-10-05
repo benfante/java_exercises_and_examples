@@ -57,5 +57,6 @@ public class Exercise1 {
 	        	exit = true;
 	        }
 		}
+		scan.close();
 	}
 }

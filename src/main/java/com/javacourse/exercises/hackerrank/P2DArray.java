@@ -1,13 +1,10 @@
 package com.javacourse.exercises.hackerrank;
 
 
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 /**
  * Solution of the 2D Array problem on HacherRank

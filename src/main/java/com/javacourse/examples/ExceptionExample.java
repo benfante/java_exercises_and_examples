@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
+@SuppressWarnings("unused")
 public class ExceptionExample {
 
 	public static void main(String[] args) throws FileNotFoundException {
@@ -54,10 +55,12 @@ public class ExceptionExample {
 		System.out.println(Arrays.toString(arr));
 	}
 	
+
 	private void thirdMethod() {
 		try {
 			FileReader fr = new FileReader("PROVA.TXT");
 			// leggerò il contenuto del file
+			fr.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.err.println("Sono nel catch di FNFE");
@@ -67,9 +70,10 @@ public class ExceptionExample {
 		}
 	}
 
-	private void fourthMethod(String filename) throws FileNotFoundException {
+	private void fourthMethod(String filename) throws FileNotFoundException, IOException {
 		FileReader fr = new FileReader(filename);
 		// leggerò il contenuto del file
+		fr.close();
 		System.out.println("Sto terminando il fourthMethod");
 	}
 
@@ -84,8 +88,12 @@ public class ExceptionExample {
 	private void sixthMethod(String filename) throws IllegalArgumentException { /* RuntimeException */
 		try {
 			FileReader fr = new FileReader(filename);
+			// leggerò il contenuto del file
+			fr.close();
 		} catch (FileNotFoundException e) {
 			throw new IllegalArgumentException("Il file non è stato trovato", e);
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Errore di IO", e);
 		}
 	}
 	

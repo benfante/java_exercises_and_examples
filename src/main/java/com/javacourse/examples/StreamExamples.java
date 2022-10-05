@@ -21,6 +21,7 @@ public class StreamExamples {
         System.out.println(Arrays.toString(examples.aParallelStream()));
     }
 
+    @SuppressWarnings("unused")
     public void doingNothing() {
         Stream<String> stream = Arrays.stream(buildPersons())
                 .filter(person -> person.getLastName().startsWith("R"))

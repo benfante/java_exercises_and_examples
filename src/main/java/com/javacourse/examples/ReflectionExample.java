@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+@SuppressWarnings("rawtypes")
 public class ReflectionExample {
     public static void main(String[] args) throws ClassNotFoundException {
         Class c = (args.length > 0) ? Class.forName(args[0]) : String.class;

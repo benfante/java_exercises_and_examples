@@ -2,14 +2,9 @@ package com.javacourse.examples.objects;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 import com.javacourse.examples.objects.repository.PersonRepository;
 import com.javacourse.examples.objects.repository.RepositoryFactory;

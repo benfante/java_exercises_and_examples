@@ -1,16 +1,13 @@
 package com.javacourse.examples.collections;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -19,6 +16,7 @@ import com.javacourse.examples.objects.Person;
 
 public class CollectionExamples {
 
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public Collection createCollectionWithoutGenerics() {
 		Collection c = new LinkedList();
 		c.add("Primo");

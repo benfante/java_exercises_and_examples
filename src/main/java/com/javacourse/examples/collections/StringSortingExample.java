@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@SuppressWarnings({"unchecked","rawtypes"})
 public class StringSortingExample {
 	public static void main(String[] args) {
 		List<String> l = new ArrayList<String>();

@@ -1,16 +1,14 @@
 package com.javacourse.exercises.hackerrank;
 
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class MatrixLayerRotation {
 
@@ -34,6 +32,7 @@ public class MatrixLayerRotation {
     }
 
     // Complete the matrixRotation function below.
+    @SuppressWarnings("unchecked")
     static void matrixRotation(List<List<Integer>> matrix, int r) {
         List<List<Integer>> result = new ArrayList<>(matrix.size());
         List<Integer> newLine = new ArrayList<>(matrix.get(0).size());
@@ -57,6 +56,7 @@ public class MatrixLayerRotation {
         }
     }
 
+    @SuppressWarnings("unused")
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 

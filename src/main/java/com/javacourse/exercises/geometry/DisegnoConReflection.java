@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@SuppressWarnings({"rawtypes"})
 public class DisegnoConReflection {
 	List<Figura> foglio = new ArrayList<>();
 
@@ -48,7 +49,7 @@ public class DisegnoConReflection {
 		
 		Constructor[] constructors = figureClass.getConstructors();
 		int parameterCount = constructors[0].getParameterCount();
-		Double[] parameterValues = new Double[parameterCount];
+		Object[] parameterValues = new Double[parameterCount];
 		for (int i = 0; i < parameterValues.length; i++) {
 			System.out.printf("Valore del parametro %d:", i+1);
 			parameterValues[i] = scan.nextDouble();
@@ -57,5 +58,7 @@ public class DisegnoConReflection {
 		Object figureObject = constructors[0].newInstance(parameterValues);
 		disegno.add((Figura)figureObject);
 		disegno.print();
+
+		scan.close();
 	}
 }

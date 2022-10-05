@@ -1,9 +1,7 @@
 package com.javacourse.exercises.hackerrank;
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Solution of the Java List problem on HacherRank

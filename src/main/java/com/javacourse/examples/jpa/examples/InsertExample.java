@@ -1,7 +1,5 @@
 package com.javacourse.examples.jpa.examples;
 
-import java.util.Date;
-
 import javax.persistence.EntityManager;
 
 import com.javacourse.examples.jpa.model.Language;

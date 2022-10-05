@@ -1,12 +1,12 @@
 package com.javacourse.exercises.hackerrank;
 
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * Solution of the Arrays: Left Rotation exercise from HackerRank
@@ -19,7 +19,7 @@ public class ArraysLeftRotation {
 
     // Complete the rotLeft function below.
     static int[] rotLeft1(int[] a, int d) {
-        Deque<Integer> l = new LinkedList();
+        Deque<Integer> l = new LinkedList<>();
         for(int j = 0; j < a.length; j++) {
             l.add(a[j]);
         }
