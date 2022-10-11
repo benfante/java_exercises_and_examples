@@ -19,8 +19,12 @@
   # Override log level for specified package
   <logger name="com.javacourse.examples" level="TRACE"/>
   
-  <root level="INFO">
+  <root level="WARN">
     <appender-ref ref="stdout" />
     <appender-ref ref="fout" />
   </root>
+
+  <!--
+  <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+  -->
 </configuration>
