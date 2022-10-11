@@ -23,7 +23,7 @@ public class ArrayExample {
 	}
 
 
-
+	@SuppressWarnings("unused")
 	public void simpleArray() {
 		int a1 = 12;
 		int a2 = 13;
