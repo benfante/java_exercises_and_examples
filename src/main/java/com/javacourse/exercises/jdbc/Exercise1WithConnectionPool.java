@@ -6,31 +6,47 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Exercise1WithConnectionPool {
+	private static final Logger log = LoggerFactory.getLogger(Exercise1WithConnectionPool.class);
 
-	// Query for MySQL
-	// private static final String MAIN_QUERY = "SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f"
-	// 		+ " JOIN inventory i ON (i.film_id = f.film_id)"
-	// 		+ " JOIN rental r ON (r.inventory_id = i.inventory_id)"
-	// 		+ " WHERE YEAR(r.rental_date) = ? AND i.store_id = ?"
-	//      + " ORDER BY f.title;";
+	private static final Map<String, String> QUERIES;
 
-	// Query for PostgreSQL
-	private static final String MAIN_QUERY = "SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f"
-			+ " JOIN inventory i ON (i.film_id = f.film_id)"
-			+ " JOIN rental r ON (r.inventory_id = i.inventory_id)"
-			+ " WHERE EXTRACT(YEAR FROM r.rental_date) = ? AND i.store_id = ?"
-			+ " ORDER BY f.title;";
+	static {
+		String mysqlMainQuery = """
+			SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f
+					JOIN inventory i ON (i.film_id = f.film_id)
+					JOIN rental r ON (r.inventory_id = i.inventory_id)
+				WHERE YEAR(r.rental_date) = ? AND i.store_id = ?
+				ORDER BY f.title;
+			""";
 
-	//	private static final String JDBC_DATABASE_PROPERTIES = "com/javacourse/exercises/jdbc/database.properties";
-	private static final String JDBC_DATABASE_PROPERTIES = "com/javacourse/exercises/jdbc/database-postgres.properties";
+		String postgresqlMainQuery = """
+			SELECT DISTINCT f.film_id, f.title, f.release_year, length FROM film f
+					JOIN inventory i ON (i.film_id = f.film_id)
+					JOIN rental r ON (r.inventory_id = i.inventory_id)
+				WHERE EXTRACT(YEAR FROM r.rental_date) = ? AND i.store_id = ?
+				ORDER BY f.title;
+			""";
+
+		QUERIES = Map.of("MySQL", mysqlMainQuery,
+			"PostgreSQL", postgresqlMainQuery);
+	}
+
+	private static final String JDBC_DATABASE_PROPERTIES = "com/javacourse/exercises/jdbc/database.properties";
+	// private static final String JDBC_DATABASE_PROPERTIES = "com/javacourse/exercises/jdbc/database-postgres.properties";
 
 	private DataSource dataSource;
 
@@ -41,9 +57,13 @@ public class Exercise1WithConnectionPool {
 	public void printFilms(int storeId, int year) {
 		try (Connection conn = dataSource.getConnection();
 				PreparedStatement stmt = conn
-						.prepareStatement(MAIN_QUERY);
-				PreparedStatement stmt2 = conn.prepareStatement("SELECT a.first_name, a.last_name FROM actor a"
-						+ " JOIN film_actor fa ON (fa.actor_id = a.actor_id)" + " WHERE fa.film_id = ?;");) {
+					.prepareStatement(QUERIES.get(conn.getMetaData().getDatabaseProductName()));
+				PreparedStatement stmt2 = conn.prepareStatement("""
+					SELECT a.first_name, a.last_name FROM actor a
+							JOIN film_actor fa ON (fa.actor_id = a.actor_id)
+						WHERE fa.film_id = ?;
+					""");) {
+			log.info("Connected to database {}", conn.getMetaData().getDatabaseProductName());
 			stmt.setInt(1, year);
 			stmt.setInt(2, storeId);
 			try (ResultSet rs = stmt.executeQuery();) {
@@ -54,14 +74,15 @@ public class Exercise1WithConnectionPool {
 					int length = rs.getInt("length");
 					stmt2.setInt(1, id);
 					try (ResultSet rs2 = stmt2.executeQuery()) {
-						System.out.print(title + ", " + releaseYear + ", " + length + " min., (");
-						if (rs2.next()) {
-							System.out.print(rs2.getString(1) + " " + rs2.getString(2));
-							while (rs2.next()) {
-								System.out.print(", " + rs2.getString(1) + " " + rs2.getString(2));
-							}
+						List<String> actors = new ArrayList<>();
+						while (rs2.next()) {
+							actors.add("%s %s".formatted(
+								rs2.getString(1),
+								rs2.getString(2)));
 						}
-						System.out.println(")");
+						System.out.printf("%s, %d, %d min., (%s)%n",
+							title, releaseYear, length,
+							actors.stream().collect(Collectors.joining(", ")));
 					}
 				}
 			}
@@ -71,9 +92,10 @@ public class Exercise1WithConnectionPool {
 	}
 
 	public static void main(String[] args) throws SQLException, IOException {
-		try (BasicDataSource dataSource = getDataSource()) {
-			Exercise1WithConnectionPool app = new Exercise1WithConnectionPool(dataSource);
+		try (BasicDataSource dataSource = getDataSource();
 			Scanner scan = new Scanner(System.in);
+		) {
+			Exercise1WithConnectionPool app = new Exercise1WithConnectionPool(dataSource);
 			boolean exit = false;
 			while (!exit) {
 				System.out.print("Store id: ");
@@ -87,7 +109,6 @@ public class Exercise1WithConnectionPool {
 					exit = true;
 				}
 			}
-			scan.close();
 		}
 	}
 
