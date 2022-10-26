@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Exercise1WithPrepared {
 	public void printFilms(int storeId, int year) {
@@ -34,14 +37,15 @@ public class Exercise1WithPrepared {
 					int length = rs.getInt("length");
 					stmt2.setInt(1, id);
 					try (ResultSet rs2 = stmt2.executeQuery()) {
-						System.out.print(title + ", " + releaseYear + ", " + length + " min., (");
-						if (rs2.next()) {
-							System.out.print(rs2.getString(1) + " " + rs2.getString(2));
-							while (rs2.next()) {
-								System.out.print(", " + rs2.getString(1) + " " + rs2.getString(2));
-							}
+						List<String> actors = new ArrayList<>();
+						while (rs2.next()) {
+							actors.add("%s %s".formatted(
+								rs2.getString(1),
+								rs2.getString(2)));
 						}
-						System.out.println(")");
+						System.out.printf("%s, %d, %d min., (%s)%n",
+							title, releaseYear, length,
+							actors.stream().collect(Collectors.joining(", ")));
 					}
 				}
 			}
@@ -52,20 +56,22 @@ public class Exercise1WithPrepared {
 
 	public static void main(String[] args) {
 		Exercise1WithPrepared app = new Exercise1WithPrepared();
-		Scanner scan = new Scanner(System.in);
-		boolean exit = false;
-		while (!exit) {
-			System.out.print("Store id: ");
-			int storeId = scan.nextInt();
-			System.out.print("Year: ");
-			int year = scan.nextInt();
-			app.printFilms(storeId, year);
-			System.out.print("Again (y/n)? ");
-			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-			if (!scan.nextLine().toLowerCase().equals("y")) {
-				exit = true;
+		try (Scanner scan = new Scanner(System.in)) {
+			boolean exit = false;
+			while (!exit) {
+				System.out.print("Store id: ");
+				int storeId = scan.nextInt();
+				System.out.print("Year: ");
+				int year = scan.nextInt();
+				scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+				app.printFilms(storeId, year);
+
+				System.out.print("Again (y/n)? ");
+				if (!scan.nextLine().toLowerCase().equals("y")) {
+					exit = true;
+				}
 			}
 		}
-		scan.close();
 	}
 }
