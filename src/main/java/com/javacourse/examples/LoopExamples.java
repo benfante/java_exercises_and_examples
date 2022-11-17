@@ -8,6 +8,7 @@ public class LoopExamples {
             System.out.println("i = " + i);
             i++;
         }
+        System.out.println("Exited");
     }
 
     public static void loopWithBreak(int today) {
