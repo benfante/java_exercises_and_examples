@@ -1,6 +1,14 @@
 package com.javacourse.examples;
 
 public class LoopExamples {
+    
+    public static void simpleWhileLoop() {
+        int i = 0;
+        while(i < 10) {
+            System.out.println("i = " + i);
+            i++;
+        }
+    }
 
     public static void loopWithBreak(int today) {
         for (int i = 1; i <= 31; i++) {
@@ -32,7 +40,8 @@ public class LoopExamples {
     }
 
     public static void main(String[] args) {
+        simpleWhileLoop();
         // loopWithBreak(18);
-        loopWithContinue(31);
+        // loopWithContinue(31);
     }
 }
